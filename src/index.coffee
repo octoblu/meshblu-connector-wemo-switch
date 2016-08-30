@@ -6,6 +6,8 @@ WemoManager     = require './wemo-manager'
 class Connector extends EventEmitter
   constructor: ->
     @wemo = new WemoManager
+    @wemo.on 'update', (data) =>
+      @emit 'update', data
 
   isOnline: (callback) =>
     @wemo.isOnline (error, {running}) =>
@@ -17,19 +19,13 @@ class Connector extends EventEmitter
     callback()
 
   onConfig: (device={}, callback=->) =>
-    { @options } = device
+    { @options, desiredState } = device
     debug 'on config', @options
     { @wemoName, @autoDiscover } = @options ? {}
-    @wemo.discover {@wemoName, @autoDiscover}, callback
+    @wemo.discover {@wemoName, @autoDiscover, desiredState}, callback
 
   start: (device, callback) =>
     debug 'started'
     @onConfig device, callback
-
-  turnOff: (callback) =>
-    @wemo.turnOff callback
-
-  turnOn: (callback) =>
-    @wemo.turnOn callback
 
 module.exports = Connector
