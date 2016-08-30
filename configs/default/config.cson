@@ -1,0 +1,24 @@
+title: "Default Configuration"
+type: "object"
+required: [
+  "options"
+]
+properties:
+  options:
+    title: "Options"
+    type: "object"
+    properties:
+      autoDiscover:
+        title: "Auto Discover Wemo Switch"
+        type: "boolean"
+        default: false
+      wemoName:
+        title: "Wemo Name"
+        type: "string"
+  desiredState:
+    title: "Desired State"
+    type: "object"
+    properties:
+      on:
+        title: "Switch On"
+        type: "boolean"
