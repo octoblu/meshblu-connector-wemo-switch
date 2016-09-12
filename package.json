@@ -1,6 +1,6 @@
 {
   "name": "meshblu-connector-wemo-switch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Meshblu Connector ",
   "homepage": "https://github.com/octoblu/meshblu-connector-wemo-switch",
   "bugs": "https://github.com/octoblu/meshblu-connector-wemo-switch/issues",
