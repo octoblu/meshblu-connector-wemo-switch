@@ -1,11 +1,14 @@
 # meshblu-connector-wemo-switch
 
+[![Build Status](https://travis-ci.org/octoblu/meshblu-connector-wemo-switch.svg?branch=master)](https://travis-ci.org/octoblu/meshblu-connector-wemo-switch)
+[![Test Coverage](https://codecov.io/gh/octoblu/meshblu-connector-wemo-switch/branch/master/graph/badge.svg)](https://codecov.io/gh/octoblu/meshblu-connector-wemo-switch)
 [![Dependency status](http://img.shields.io/david/octoblu/meshblu-connector-wemo-switch.svg?style=flat)](https://david-dm.org/octoblu/meshblu-connector-wemo-switch)
 [![devDependency Status](http://img.shields.io/david/dev/octoblu/meshblu-connector-wemo-switch.svg?style=flat)](https://david-dm.org/octoblu/meshblu-connector-wemo-switch#info=devDependencies)
-[![Build Status](http://img.shields.io/travis/octoblu/meshblu-connector-wemo-switch.svg?style=flat&branch=master)](https://travis-ci.org/octoblu/meshblu-connector-wemo-switch)
 [![Slack Status](http://community-slack.octoblu.com/badge.svg)](http://community-slack.octoblu.com)
 
 [![NPM](https://nodei.co/npm/meshblu-connector-wemo-switch.svg?style=flat)](https://npmjs.org/package/meshblu-connector-wemo-switch)
+[![Dependency status](http://img.shields.io/david/octoblu/meshblu-connector-wemo-switch.svg?style=flat)](https://david-dm.org/octoblu/meshblu-connector-wemo-switch)
+
 
 ## Installing
 
