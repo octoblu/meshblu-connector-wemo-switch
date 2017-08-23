@@ -1,6 +1,6 @@
 _              = require 'lodash'
 {EventEmitter} = require 'events'
-WemoClient     = require '@octoblu/wemo-client'
+WemoClient     = require 'wemo-client'
 debug           = require('debug')('meshblu-connector-wemo-switch:wemo-manager')
 
 class WemoManager extends EventEmitter
@@ -25,6 +25,7 @@ class WemoManager extends EventEmitter
   _onDiscover: (device, callback=_.noop) =>
     unless device?
       debug 'missing device'
+      debug 'callback', callback
       return callback new Error 'missing device'
     { deviceType } = device
     {Switch, Insight} = WemoClient.DEVICE_TYPE

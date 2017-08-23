@@ -3,7 +3,7 @@
 sinon = require 'sinon'
 
 UUID = require 'uuid'
-WemoClient = require '@octoblu/wemo-client'
+WemoClient = require 'wemo-client'
 WemoManager = require '../src/wemo-manager'
 {EventEmitter} = require 'events'
 
