@@ -1,11 +1,11 @@
 language: cpp
 os:
-- linux
+- loonix
 - osx
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+    - ubnutu-toolchain-r-test
     packages:
     - g++-4.8
     - g++-4.8-multilib
@@ -30,9 +30,8 @@ before_install:
 - PACKAGER_URL="https://meshblu-connector.octoblu.com/tools/packager/latest"
 - curl -fsS "${PACKAGER_URL}/travis_install_node.sh" -o /tmp/travis_install_node.sh
 - chmod +x /tmp/travis_install_node.sh
-- . /tmp/travis_install_node.sh
-- if [ "$TRAVIS_OS_NAME" == "linux" -a "$MAIN_BUILD" == "true" ]; then export NPM_PUBLISH="true";
-  fi
+- ". /tmp/travis_install_node.sh"
+- if [ "$TRAVIS_OS_NAME" == "linux" -a "$MAIN_BUILD" == "true" ]; then export NPM_PUBLISH="true"; fi
 install:
 - npm install --build-from-source
 script:
@@ -49,29 +48,22 @@ before_deploy:
 deploy:
 - provider: releases
   api_key:
-    secure: q2NGV8NxpD0JpYp1bB85YYs7ixRD7J/kQJadsixqxetRyTwhiLGnpWGylUcxj3UOHP1vb5yWvjzCuHJGqOjdM+bt/QLrNjXhLHsnJAE28scppdlYQZ2Er+lvCByghnIQFYdVWS2kKNNEOF8YgDdrc64TOmpc2Ff5syX51jFvZy+nsByG4uPkZ5Ag1ZbNQpesOjsRs13Y++FNHKzWmW2QutldKs3JPBEun7D6FETz9iiVSj2NeotrhrKk8dBUvdCm42PKYGsmHjbeDz6OH477grdeL6XobiAxy3oMBsoMqZ/PqLsQB1lulMojBGMH2onypm1/Y1AgTM/Shajr1wPSkL5haMrjfBfyMyvw9Itew4LBmECPQ1AStlxfCmXdMGF/HnFVBcQEFdScpBsCAUT3Lbb5k2NB2uBDnrI71OrgCtW3rEj/957HpVXG90oNeIwLBZMxE3XnJOjee5gVGBtx9kJytlhwQMwpx3pK/QVOCgdNO367TCOl9NiTjcMRT0m6uYTX+Bdnwlrxe5gtOgAkk/dAwAF9TZVQ/2133T7bHmpXpPSA/WOq2etq/HbF2jTV1Rr27WZIN6XOPHOlWtuzsg02HSt80oh/yl54XXsIC5dMHKnSImCXCE8JQyTZeGYROvNVRJRShKf1VvzqOanC8p+kdQ/CDTzoHyMDcHHqq7I=
+    secure: "q2NGV8NxpD0JpYp1bB85YYs7ixRD7J/kQJadsixqxetRyTwhiLGnpWGylUcxj3UOHP1vb5yWvjzCuHJGqOjdM+bt/QLrNjXhLHsnJAE28scppdlYQZ2Er+lvCByghnIQFYdVWS2kKNNEOF8YgDdrc64TOmpc2Ff5syX51jFvZy+nsByG4uPkZ5Ag1ZbNQpesOjsRs13Y++FNHKzWmW2QutldKs3JPBEun7D6FETz9iiVSj2NeotrhrKk8dBUvdCm42PKYGsmHjbeDz6OH477grdeL6XobiAxy3oMBsoMqZ/PqLsQB1lulMojBGMH2onypm1/Y1AgTM/Shajr1wPSkL5haMrjfBfyMyvw9Itew4LBmECPQ1AStlxfCmXdMGF/HnFVBcQEFdScpBsCAUT3Lbb5k2NB2uBDnrI71OrgCtW3rEj/957HpVXG90oNeIwLBZMxE3XnJOjee5gVGBtx9kJytlhwQMwpx3pK/QVOCgdNO367TCOl9NiTjcMRT0m6uYTX+Bdnwlrxe5gtOgAkk/dAwAF9TZVQ/2133T7bHmpXpPSA/WOq2etq/HbF2jTV1Rr27WZIN6XOPHOlWtuzsg02HSt80oh/yl54XXsIC5dMHKnSImCXCE8JQyTZeGYROvNVRJRShKf1VvzqOanC8p+kdQ/CDTzoHyMDcHHqq7I="
   file_glob: true
   file:
-  - deploy/*
+  - "deploy/*"
   skip_cleanup: true
   on:
     tags: true
 - provider: npm
   email: serveradmin@octoblu.com
   api_key:
-    secure: PwmRGpRJNh9ceSYlia+3DDWoOqu+vmDye8YeF5/FdL+D4K2RrDL5OcY64S5hihKBlCMCPpN8YSlCscttthHaZYGso8naj53G1h+z+ATzecpLLYJWUcHKyTh4bmFzQG5yAyZL79APNhIkWpY3SzDvchqY71QxRXppm6kMkkTAA0Kr89mt5HGtFaKFHsd+axe9m2QdJXHbCKUbtnTdgo8U2d3ZTLUenXUdmM45sPYqrxn3iWPz2uyo/Eq2G8bft6+tXJaFJtMzNvjlItJedpKO12fTsM2XqjcKYpSntu0bqW/hBYuEj4BJFtmMaEbDJhNDfleohRHCb/q1waAD6+w0b6Cf+uh9LceJqEeWx83MlBiMihopdz1n8XuT33q6+W0mYubd2tUdMoSwfZ/f75lrHh8B8C5MTuVeb5zVeX+TJ3EyJcd+z52EkUohz7mc4w/TB/jRU7TwZPPXGf56z5+AnYCnR5L/AQpe0HJSpGk2SjXKGyxoJ0UCn1QXZvybRACBEm6n0QOhCYP3whmR+j+02UmLOuvIqhG8hixM4vUwAcEVoJYh9uq9Xr4EPM270eL4ZXZed38/y1HqYFEZZ0yqA0/clrj7NbHKLhy5QoUY3wTBWwmAVAQEj26L3h19yTsoGD5/yNWtYU5s74hEzaiZo2FA+hdC1u1PqEIvDWmV97A=
+    secure: "PwmRGpRJNh9ceSYlia+3DDWoOqu+vmDye8YeF5/FdL+D4K2RrDL5OcY64S5hihKBlCMCPpN8YSlCscttthHaZYGso8naj53G1h+z+ATzecpLLYJWUcHKyTh4bmFzQG5yAyZL79APNhIkWpY3SzDvchqY71QxRXppm6kMkkTAA0Kr89mt5HGtFaKFHsd+axe9m2QdJXHbCKUbtnTdgo8U2d3ZTLUenXUdmM45sPYqrxn3iWPz2uyo/Eq2G8bft6+tXJaFJtMzNvjlItJedpKO12fTsM2XqjcKYpSntu0bqW/hBYuEj4BJFtmMaEbDJhNDfleohRHCb/q1waAD6+w0b6Cf+uh9LceJqEeWx83MlBiMihopdz1n8XuT33q6+W0mYubd2tUdMoSwfZ/f75lrHh8B8C5MTuVeb5zVeX+TJ3EyJcd+z52EkUohz7mc4w/TB/jRU7TwZPPXGf56z5+AnYCnR5L/AQpe0HJSpGk2SjXKGyxoJ0UCn1QXZvybRACBEm6n0QOhCYP3whmR+j+02UmLOuvIqhG8hixM4vUwAcEVoJYh9uq9Xr4EPM270eL4ZXZed38/y1HqYFEZZ0yqA0/clrj7NbHKLhy5QoUY3wTBWwmAVAQEj26L3h19yTsoGD5/yNWtYU5s74hEzaiZo2FA+hdC1u1PqEIvDWmV97A="
   on:
     tags: true
-    condition: $NPM_PUBLISH = true
+    condition: "$NPM_PUBLISH = true"
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 branches:
   only:
-  - /^v[0-9]/
-after_success:
-- npm run coverage
-- npm run mocha:json
-- bash <(curl -s https://codecov.io/bash)
-- bash <(curl -s https://codecov.octoblu.com/bash)
-deab9af455182ad5881b6bdb853dbba50b0099ab:
-  secure: q6XDO1BOE7TnWm5hNqVHNUeVceeBxjaqHLgwVgWPCqIoRjPyqmShxIS65Z7FenKIvKgPkAHzyvjE640w1f1TvrhDHDgoA4SNFbKxqAED8w4FvZt1AWMNp74h+H3tce+XvtIEmjEZqeqcyldwS+zl1n+coumnLzTh9T/7skLnBCuSbrbzXXQEetMSqFdcpxTAstHJJHdE3sXXrjAYkz/wn2G1iDIFOD7+1GwGVQsBFWUwCWv5N1i/Pdd7Ih32Q2Fc4ltMSk1BMVAZ9LEN5Uiu74I9EhI5tbggId8oyHHvLRCaGhCJghtDCvILnxlWs//KleKkgDUYIjB3cGjoj+WRdS5qJ8l3nbliSVA27UNrvY+qb65hEf1zyWG7vxZjomECns2mzPLq9DVo1NygkYjeBaD24J5mj9+SrokkXqOhDZSzPgsUVWzE1xRNczsk5m3h9CD9k5xXCIpCh6ATTZF2RUMQrxZb6KBdWaSAOwbF7nQi0IOvies3USenYcSitscYI/OtUwiLx8Yyu4aigExXbkTFOLmTKJfrP7bXxXWSH4uLKEntZYUEnOXaqp350I5nNZ41jB3TtqCscOhN6CeR3IjCa5HKr07MWL2GeGpq4bfrImPH+Y4q6kkr2DpPxIk98idGwQE8aVnAPl0cSgljko16bSEuH7Bml7V3mLxo4fE=
-955b50ec725648daaf97a0428c504830708ee1ee:
-  secure: j1o1Vbj90kd12t9YiszHA1BXFXbRLfK6Dhuugutbbp8gOFu1sdsH5u6KW68T5oi21S2G39hTjLzYcfbxm2ik1Y2Eb354Y3TfLUq3Z+KcyPppz971QC1mVhzxa4sWEGjRK/q2KqwQl9C032ufiztoYj2s1Hgw9JWbvRgPWUEm8oTFL3AJzNhtX1SRwy7B8R51LQduF/kxdI09vRbD/sneTci9y5sqFYQDxiLEC/hfvoOF5H6XEw6t2kr3jLEApqz9tmmzmYKUEK8UFvKQdYZ9YJUE7w+/OqWqb1c9i/ONJcCEIIeKisTupIt+zgDRPCmEOpO6CZ8du7+JbF6e81OfpGm0nysiZiDQt+MLgojUsXhp4RPPrh1GWiUbVUHggw9CHYOihWNsoOnfCjrTJDgjKcpfLJReKEuWQ/drv5ahGymEi/D0q+CNX4WgNaMgyRP4G0vLRx8gimS5i6tp9XdpTKJU4AHt1IZJ71QE/PeqjI8O8seC2M+Iz1LJ6Ct4wj0xMez/C2dQhVy0KQXZAt0F5Mox7HAm3IuSTwIw5yqkvaAFXJrDcnY8ndGvbxIbnIDZbcQXOb0wu9kuTftLnOvsScwvpbAKjFonpS2M2qrTe4Aymz1yQHjuP6+mhWBngUHP90inv+pkls7Vti9GhXCoUtM98BDQiMKwNckNExdFAC4=
+  - "/^v[0-9]/"
